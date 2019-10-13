@@ -9,7 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.example.android.navigation.TitleFragmentDirections.*
 import com.example.android.navigation.databinding.FragmentTitleBinding
+import com.example.android.navigation.TitleFragmentDirections.actionTitleFragmentToGameFragment as
 
 /**
  * A simple [Fragment] subclass.
@@ -19,9 +21,12 @@ class TitleFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<FragmentTitleBinding>(inflater, R.layout.fragment_title, container, false)
-        binding.playButton.setOnClickListener(
-                Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_gameFragment)
-        )
+        binding.playButton.setOnClickListener { v: View ->
+            v.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToGameFragment())
+        }
+        //binding.playButton.setOnClickListener(
+                //Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_gameFragment)
+       // )
 
         setHasOptionsMenu(true)
             //Navigation.findNavController(view).navigate(R.id.action_titleFragment_to_gameFragment)
